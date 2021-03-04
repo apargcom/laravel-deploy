@@ -1,3 +1,5 @@
+#Branch to pull
+BRANCH="master"
 #Path to project
 PROJECT_PATH="/home/apargcom/addon/ipsm"
 
@@ -9,7 +11,7 @@ function deploy(){
 	# Pull the latest changes from the git repository
 	# git reset --hard
 	# git clean -df
-	git pull origin master
+	git pull origin $BRANCH
 
 	# Install/update composer dependecies
 	composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
@@ -60,7 +62,7 @@ done
 #Getting git hashes
 HEAD_HASH=$(git rev-parse HEAD)
 HASH_LENGTH=${#HEAD_HASH}
-UPSTREAM_HASH=$(git ls-remote origin -h refs/heads/master)
+UPSTREAM_HASH=$(git ls-remote origin -h refs/heads/$BRANCH)
 UPSTREAM_HASH=${UPSTREAM_HASH:0:HASH_LENGTH}
 
 #Call deploy hook if meet the conditions
