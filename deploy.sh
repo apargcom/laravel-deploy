@@ -7,10 +7,14 @@ PROJECT_PATH="/home/apargcom/addon/ipsm"
 function deploy(){
 	# Turn on maintenance mode
 	php artisan down || true
-
+	
+	# Discard all uncommited changes
+	git reset --hard	
+	
+	# Remove all untracked files and folders
+	git clean -df
+	
 	# Pull the latest changes from the git repository
-	# git reset --hard
-	# git clean -df
 	git pull origin $BRANCH
 
 	# Install/update composer dependecies
