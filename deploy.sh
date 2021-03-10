@@ -1,7 +1,7 @@
-#Branch to pull
+#Working branch
 BRANCH="master"
-#Path to project
-PROJECT_PATH="/home/apargcom/addon/ipsm"
+#Project path
+PROJECT_PATH="/home/XXX/XXX/XXX"
 
 #Deploy hook
 function deploy(){
@@ -15,7 +15,7 @@ function deploy(){
 	git clean -df
 	
 	# Pull the latest changes from the git repository
-	git pull origin $BRANCH
+	git pull origin
 
 	# Install/update composer dependecies
 	composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
